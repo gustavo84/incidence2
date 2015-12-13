@@ -24,6 +24,7 @@
         <delete dir="bin"/>
     	<delete file="${ARCHIVE_DIR}/${warname}" />
     </target>
+	<target name="test" depends="build-project"/>
     <target name="build" depends="build-project,build-war"/>
     <target name="cleanall" depends="clean"/>
     <target name="build-project" depends="clean,init">
