@@ -23,7 +23,7 @@ public class CloudantClientMgr {
 	private static String user = null;
 	private static String password = null;
 
-	private static void in itClient() {
+	private static void initClient() {
 		if (cloudant == null) {
 			synchronized (CloudantClientMgr.class) {
 				if (cloudant != null) {
