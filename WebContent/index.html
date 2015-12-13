@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html ng-app="test">
+<head>
+	<link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
+
+</head>
+
+
+<body  ng-controller="SimpleController">
+
+
+	
+	<div align="left" class="topHalf">
+    Usuario: 
+    <input type="text" class="fieldname" data-ng-model="usuario">
+    </div>
+
+	<div class="leftHalf">
+		<table border="1" >
+		    <tr class="cabecera">
+		    	<th width="7%">Identificador</th>
+		        <th width="40%">Resumen incidencia</th>
+		        <th>Criticidad</th>
+		        <th>Estado final</th>
+		        <th>Usuario</th>
+		        <th>Fecha reporte</th>
+		        <th></th>
+		    </tr>
+		    <tr class="{{selected}}" ng-repeat="incidencia in incidencias | filter:usuario | orderBy:'usuario'">
+		    	<td>{{incidencia.identificador}}</td>	    
+		        <td>{{incidencia.resumenIncidencia}}</td>
+		        <td align="center">{{incidencia.criticidad}}</td>
+		        <td align="center">{{incidencia.resumenEstado}}</td>
+		        <td align="center">{{incidencia.usuario}}</td>
+		        <td align="center">{{incidencia.fechaReporte}}</td>
+				<td>
+		          <button  ng-click="verDetalle(incidencia);setSelected()">
+		            Ver detalle
+		          </button>
+	        	</td>
+		    </tr>
+		</table>
+	</div>
+
+	<div id="tablaDetalle"  class="rightHalf">
+	
+	</div>
+	
+	<div id="tablaDetalleInfo"  class="rightHalfInfo">
+	
+	</div>
+	
+	<div style="position: absolute;display: none;" id="loadingImage">Cargando datos...<img height="100" width="100" src="images/loading.gif"></img></div>
+
+	<div align="center" class="downHalf">
+		<button ng-click="pruebasUniBkEnd()">Lanzamiento pruebas unitarias lado back-end</button><br/>
+		<button ng-click="pruebasUniFrontEnd()">Lanzamiento pruebas unitarias lado front-end</button>
+	</div>
+	
+
+
+    <script>
+        var app = angular.module('test', []);
+        
+        var REST_DATA = 'api/favorites';
+        //var REST_DATA = 'http://incidence2.eu-gb.mybluemix.net/api/favorites';
+        var items;
+
+        app.controller('SimpleController', function($scope, $http){
+        	showLoadingMessage();
+
+    	    $http.get("http://incidence2.eu-gb.mybluemix.net/api/favorites").then(function(response) {
+    	    	$scope.incidencias=response.data.body;
+    	    	stopLoadingMessage();
+    	    });    	    
+            
+            $scope.verDetalle = function (incidencia) {            	
+	            var operacion=parseJson((incidencia.operacion+"").replace('\\',''));
+	            
+	            var tabla00="<table border='1'><tr class='cabecera'><th>Id    - Resumen</th></tr>";
+	            tabla00+="<tr><td>"+incidencia.identificador+" - "+incidencia.resumenIncidencia+"</td></tr><table>";
+	            
+	            var tabla0="<table border='1'><tr class='cabecera'><th>Texto descriptivo</th></tr>";
+	            tabla0+="<tr><td>"+incidencia.textoDescriptivo+"</td></tr><table>";
+	            
+				var tabla="<table border='1'><tr class='cabecera'><th>Estado</th><th>Comentario</th><th>Fecha</th>";
+				for(t=0;t<operacion.length;t++){
+					tabla+="<tr><td>"+operacion[t].estado+"</td>"+"<td>"+operacion[t].comentario+"</td><td>"+operacion[t].fecha+"</td></tr>";
+				}
+				
+	           	tabla+="</table>";
+	
+	           	var div=document.getElementById("tablaDetalle");
+	           	div.innerHTML =tabla00+tabla0+ tabla;           	 
+           	};   
+           	
+           	$scope.setSelected = function() {
+           	   // console.log("show", arguments, this);
+           	   if ($scope.lastSelected) {
+           	     $scope.lastSelected.selected = '';
+           	   }
+           	   this.selected = 'selected';
+           	   $scope.lastSelected = this;
+           	}
+           	
+            $scope.pruebasUniBkEnd = function () {
+            	showLoadingMessage();
+                $http.get("http://incidence2.eu-gb.mybluemix.net/api/favorites?id=2").then(function(response) {
+                	var tabla="<table border='1'>"
+                	tabla+="<tr><td>conexionBD: "+response.data.conexionBD+"</td></tr><tr><td>recuperacionDocsBd: "+response.data.recuperacionDocsBd+"</td></tr>";
+            		for(t=0;t<response.data.info.length;t++){
+    					tabla+="<tr><td>"+response.data.info[t]+"</td></tr>";
+    				}
+    	           	tabla+="</table>";	        
+    	           	var div=document.getElementById("tablaDetalleInfo");
+    	           	div.innerHTML = tabla;   
+    	           	stopLoadingMessage();
+        	    });
+           	};   
+           	
+            $scope.pruebasUniFrontEnd = function () {
+            	showLoadingMessage();
+            	alert('Se va a proceder a la carga de datos para la tabla par probar su funcionamiento');
+            	var prueba0="ok";
+            	var prueba0var;
+            	try{
+            		$scope.incidencias='????+`';
+            		prueba0var='????+`';
+            	}catch(err){
+            		prueba0=err.message;
+            	}
+            	var prueba1="ok";
+            	var prueba1var=[{"resumenIncidencia":"null","textoDescriptivo":"Norrrr puedo acceder","criticidad":"alta","usuario":"gcastro","fechaReporte":"11/12/2015 12:00","operacion":"[{\"estado\":\"ABIERTA\",\"comentario\":\"\",\"fecha\":\"12/12/2015 12:45\"},{\"estado\":\"CERRADA\",\"comentario\":\"se corrige\",\"fecha\":\"12/12/2015 13:45\"}]","resumenEstado":"CERRADA"},{"resumenIncidencia":"La url de la aplicaciÃ³n sin acceso","textoDescriptivo":"No puedo acceder","criticidad":"alta","usuario":"gcastro","fechaReporte":"11/12/2015 12:00","operacion":"[{\"estado\":\"ABIERTA\",\"comentario\":\"\",\"fecha\":\"12/12/2015 12:45\"},{\"estado\":\"CERRADA\",\"comentario\":\"se corrige\",\"fecha\":\"12/12/2015 13:45\"}]","resumenEstado":"CERRADA"}];
+            	try{
+            		$scope.incidencias=[{"resumenIncidencia":"null","textoDescriptivo":"Norrrr puedo acceder","criticidad":"alta","usuario":"gcastro","fechaReporte":"11/12/2015 12:00","operacion":"[{\"estado\":\"ABIERTA\",\"comentario\":\"\",\"fecha\":\"12/12/2015 12:45\"},{\"estado\":\"CERRADA\",\"comentario\":\"se corrige\",\"fecha\":\"12/12/2015 13:45\"}]","resumenEstado":"CERRADA"},{"resumenIncidencia":"La url de la aplicaciÃ³n sin acceso","textoDescriptivo":"No puedo acceder","criticidad":"alta","usuario":"gcastro","fechaReporte":"11/12/2015 12:00","operacion":"[{\"estado\":\"ABIERTA\",\"comentario\":\"\",\"fecha\":\"12/12/2015 12:45\"},{\"estado\":\"CERRADA\",\"comentario\":\"se corrige\",\"fecha\":\"12/12/2015 13:45\"}]","resumenEstado":"CERRADA"}]
+            	}catch(err){
+              		prueba1=err.message;
+              	}
+               	var prueba2="ok";
+               	var prueba2var=[{"resumenIncidencia":"null"}]
+               	try{
+               		$scope.incidencias=[{"resumenIncidencia":"null"}]
+               	}catch(err){
+                 		prueba2=err.message;
+                }            		
+            	stopLoadingMessage();
+
+            	var tabla="<table border='1'>";
+            	tabla+="<tr><td>Resultado<td>Entrada variable carga tabla</td></tr>";
+                tabla+="<tr><td>prueba 0: "+prueba0+"</td><td>"+prueba0var+"</td></tr><tr><td>prueba1: "+prueba1+"</td><td>"+JSON.stringify(prueba1var)+"</td></tr><tr><td>prueba2: "+prueba2+"</td><td>"+JSON.stringify(prueba2var)+"</td></tr>";
+                tabla+="</table>";	                 	
+    	        var div=document.getElementById("tablaDetalleInfo");
+	           	div.innerHTML = tabla;                   	
+           	};              	
+           	
+       	});
+        
+        function showLoadingMessage()
+        {
+        	document.getElementById('loadingImage').style.display = "inline";
+        }
+        function stopLoadingMessage()
+        {
+        	document.getElementById('loadingImage').style.display = "none";
+        }
+
+        function parseJson(str){
+        	return window.JSON ? JSON.parse(str) : eval('(' + str + ')');
+        }
+        
+
+    </script>
+</body>
+</html>
