@@ -1,0 +1,95 @@
+
+    {
+      "identificador":"IN-0001",
+      "resumenIncidencia":"La url de la aplicación sin acceso",
+      "textoDescriptivo":"No puedo acceder a la pantalla principal", 
+      "criticidad":"CRITICO",
+      "operacion": [ { "estado": "ABIERTA","comentario":"","fecha":"12/12/2015 12:45" }, { "estado": "DUPLICADA","comentario":"duplica a la IN-000","fecha":"12/12/2015 13:45" }, { "estado": "CERRADA","comentario":"se cierra por duplicado IN-000","fecha":"12/12/2015 15:45" } ],
+      "usuario": "gcastro",
+      "fechaReporte": "11/12/2015 12:00"
+    
+    }
+
+
+    {
+      "identificador":"IN-0000",
+      "resumenIncidencia":"Error javascript",
+      "textoDescriptivo":"Al acceder al botón salta un error javascript", 
+      "criticidad":"CRITICO",
+      "operacion": [ { "estado": "ABIERTA","comentario":"","fecha":"12/12/2015 12:45" }, { "estado": "RESOLVIENDOSE","comentario":"se sube a la rama por tarea","fecha":"12/12/2015 13:45" }, { "estado": "FEEDBACK","comentario":"se necesita que el usuario lo pruebe","fecha":"12/12/2015 14:45" } , { "estado": "ABIERTA","comentario":"se necesita mejorar el comoportamiento del botón","fecha":"12/12/2015 15:45" }, { "estado": "RESOLVIENDOSE","comentario":"se mejora el desarrollo","fecha":"12/12/2015 16:45" }],
+      "usuario": "rlopez",
+      "fechaReporte": "11/12/2015 12:00"
+    
+    }
+
+    {
+      "identificador":"IN-0002",
+      "resumenIncidencia":"Posicionamiento de la ventana incorrecto en dispositivo",
+      "textoDescriptivo":"En un android con pantalla 5.5 pulgadas la ventana no se visualiza correctamente, no atiende a los estándares", 
+      "criticidad":"CRITICO",
+      "operacion": [ { "estado": "ABIERTA","comentario":"","fecha":"12/12/2015 12:45" }, { "estado": "RESOLVIENDOSE","comentario":"se sube a la rama por tarea, se corrige mediante ajuste por proporciones","fecha":"12/12/2015 13:45" }, { "estado": "FEEDBACK","comentario":"se visualiza correctamente y se puede cerrar","fecha":"12/12/2015 14:45" } , { "estado": "RESUELTA","comentario":"se puede cerrar la incidencia, se visualiza bien","fecha":"12/12/2015 16:45" }, { "estado": "CERRADA","comentario":"se cierra se ha integrado el cambio en PRO","fecha":"13/12/2015 16:45" }],
+      "usuario": "rgarcia",
+      "fechaReporte": "10/12/2015 12:00"
+    
+    }
+
+    {
+      "identificador":"IN-0003",
+      "resumenIncidencia":"Pruebas unitarias de back-end app error",
+      "textoDescriptivo":"Las pruebas unitarias de acceso a back-end del aplicativo están dando error", 
+      "criticidad":"CRITICO",
+      "operacion": [ { "estado": "ABIERTA","comentario":"","fecha":"12/12/2015 12:45" }, { "estado": "RESOLVIENDOSE","comentario":"se ha producido un problema con la conexión, se modifica la conexión","fecha":"12/12/2015 13:45" }, { "estado": "RESUELTA","comentario":"se puede cerrar la incidencia, se visualiza bien","fecha":"12/12/2015 16:45" }, { "estado": "FEEDBACK","comentario":"las pruebas unitarias son correctas pero de un entorno inapropiado debe ser CERT","fecha":"12/12/2015 14:45" } , { "estado": "RESOLVIENDO","comentario":"se configura el entorno especificado","fecha":"12/12/2015 16:45" }, { "estado": "CERRADA","comentario":"se cierra se ha integrado el cambio en rama por tarea","fecha":"13/12/2015 16:45" }],
+      "usuario": "rgarcia",
+      "fechaReporte": "10/12/2015 12:00"
+    
+    }
+
+    {
+      "identificador":"IN-0004",
+      "resumenIncidencia":"El color de fondo del fondo provoca que no se visualice",
+      "textoDescriptivo":"Es necesario cambiar el fondo en algunos dispositivos no se visualiza", 
+      "criticidad":"BAJO",
+      "operacion": [ { "estado": "ABIERTA","comentario":"","fecha":"12/12/2015 12:45" }, { "estado": "RESOLVIENDOSE","comentario":"se cambia el color por uno más claro","fecha":"12/12/2015 13:45" }, { "estado": "RESUELTA","comentario":"se integra el cambio","fecha":"12/12/2015 16:45" }, { "estado": "FEEDBACK","comentario":"se visualiza correctamente se puede cerrar","fecha":"12/12/2015 17:45" } , { "estado": "CERRADA","comentario":"se cierra","fecha":"13/12/2015 16:45" }],
+      "usuario": "gcastro",
+      "fechaReporte": "09/12/2015 12:00"    
+    }
+
+    {
+      "identificador":"IN-0005",
+      "resumenIncidencia":"Al hacer click dos veces a la vez al botón se bloquea",
+      "textoDescriptivo":"Cuando por impaciencia se produce esta acción produce un bloqueo", 
+      "criticidad":"BAJO",
+      "operacion": [ { "estado": "ABIERTA","comentario":"","fecha":"12/12/2015 12:45" }, { "estado": "NORESOLVER","comentario":"esto no es un error","fecha":"12/12/2015 13:45" }, { "estado": "CERRADA","comentario":"se cierra porque no se decide no resuelver","fecha":"12/12/2015 16:45" }],
+      "usuario": "gcastro",
+      "fechaReporte": "09/12/2015 12:00"    
+    }
+
+    {
+      "identificador":"IN-0006",
+      "resumenIncidencia":"El usuario us001 incapaz de loguearse",
+      "textoDescriptivo":"El usuario us001 incapaz de loguearse, dice que ya dio de alta el usuario", 
+      "criticidad":"MEDIA",
+      "operacion": [ { "estado": "ABIERTA","comentario":"","fecha":"12/12/2015 12:45" }, { "estado": "RESOLVIENDOSE","comentario":"su usuario está fuera del alcance de la LDAP, se procede a dar de alta","fecha":"12/12/2015 13:45" }, { "estado": "RESUELTA","comentario":"se da de alta","fecha":"12/12/2015 16:45" },{ "estado": "FEEDBACK","comentario":"el usuario puede entrar ya se puede cerrar","fecha":"13/12/2015 16:45" }],
+      "usuario": "gcastro",
+      "fechaReporte": "08/12/2015 13:00"    
+    }
+
+    {
+      "identificador":"IN-0007",
+      "resumenIncidencia":"Null pointer excepcion",
+      "textoDescriptivo":"Al acceder desde un determinado centro se produce esta excepción", 
+      "criticidad":"MEDIA",
+      "operacion": [ { "estado": "ABIERTA","comentario":"","fecha":"12/12/2015 12:45" }, { "estado": "RESOLVIENDOSE","comentario":"comienzo a resolverla es configuracion","fecha":"12/12/2015 13:45" }, { "estado": "RESUELTA","comentario":"se da de alta la configuración correspondiente","fecha":"12/12/2015 16:45" },{ "estado": "FEEDBACK","comentario":"se visualiza correctamente la pantalla","fecha":"13/12/2015 16:45" }],
+      "usuario": "gcastro",
+      "fechaReporte": "08/12/2015 09:00"    
+    }
+
+    {
+      "identificador":"IN-0008",
+      "resumenIncidencia":"Sql excepcion al generar el listado",
+      "textoDescriptivo":"Al acceder al listado se visualiza este error", 
+      "criticidad":"BAJO",
+      "operacion": [ { "estado": "ABIERTA","comentario":"","fecha":"12/12/2015 12:45" }, { "estado": "RESOLVIENDOSE","comentario":"comienzo a resolverla es configuracion","fecha":"12/12/2015 13:45" }, { "estado": "RESUELTA","comentario":"se da de alta un registro en tabla de configuración","fecha":"12/12/2015 16:45" },{ "estado": "FEEDBACK","comentario":"se visualiza correctamente la pantalla","fecha":"13/12/2015 16:45" }],
+      "usuario": "gcastro",
+      "fechaReporte": "08/12/2015 09:00"    
+    }
