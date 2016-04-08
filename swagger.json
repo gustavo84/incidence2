@@ -119,7 +119,7 @@
             }
           }
         },
-        "x-mediation-script" : "var tags = mc.getProperty('uri.var.tags');\nvar limit = mc.getProperty('uri.var.limit');\n\nmc.setPayloadJSON('{ \"userId\" : \"7\",\"nombre\":\"hanscanpa\"}')\n\n\n\n"
+        "x-mediation-script" : "var ids = mc.getProperty('uri.var.id');\nmc.setPayloadJSON('{ \"userId\" : '+ids+',\"nombre\":\"hanscanpa\"}')\n\n\n\n"
       },
       "delete" : {
         "description" : "deletes a single user based on the ID supplied",
