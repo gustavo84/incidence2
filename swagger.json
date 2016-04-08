@@ -1,14 +1,14 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "description" : "A sample API that uses a userstore as an example to demonstrate features in the swagger-2.0 specification",
+    "description" : "Sample Api use case user",
     "version" : "1.0.0",
     "title" : "Swaggeruserstore",
     "termsOfService" : "http://helloreverb.com/terms/",
     "contact" : {
       "name" : "Swagger API team",
       "url" : "http://swagger.io",
-      "email" : "foo@example.com"
+      "email" : "hasncan@hanscan.com"
     },
     "license" : {
       "name" : "MIT",
@@ -25,7 +25,7 @@
       "get" : {
         "description" : "Returns all users from the system that the user has access to",
         "operationId" : "findusers",
-        "produces" : [ "application/json", "application/xml", "text/xml", "text/html" ],
+        "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "tags",
           "in" : "query",
@@ -61,7 +61,7 @@
             }
           }
         },
-        "x-mediation-script" : "var tags = mc.getProperty('uri.var.tags');\nvar limit = mc.getProperty('uri.var.limit');\n\nmc.setPayloadJSON('{ \"data\" : \"sample JSON\"}')"
+        "x-mediation-script" : "var tags = mc.getProperty('uri.var.tags');\nvar limit = mc.getProperty('uri.var.limit');\n\nmc.setPayloadJSON('[{ \"userId\" : \"7\",\"nombre\":\"hanscanpa\"},{ \"userId\" : \"7\",\"nombre\":\"hanscanpa\"},{ \"userId\" : \"7\",\"nombre\":\"hanscanpa\"},{ \"userId\" : \"7\",\"nombre\":\"hanscanpa\"},{ \"userId\" : \"7\",\"nombre\":\"hanscanpa\"}]')"
       },
       "post" : {
         "description" : "Creates a new user in the store.  Duplicates are allowed",
